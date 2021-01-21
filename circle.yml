@@ -27,7 +27,7 @@ general:
 
 deployment:
   staging:
-    branch: master
+    branch: develop
     commands:
       - yarn run build
       - sh ./config/deploy-ghpages.sh dist

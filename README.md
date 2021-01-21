@@ -1,7 +1,5 @@
 # tdo
 
-> This project is not maintained anymore. The new version of tdo based on Firebase is available at https://github.com/codaxy/tdo.
-
 A flexible TODO list with the following features:
 
 - Markdown support
@@ -14,9 +12,7 @@ A flexible TODO list with the following features:
 
 ![Screenshot](/assets/screenshot.png)
 
-[Open](https://mstijak.github.io/tdo/)
-
-Also available as a [Chrome extension](https://chrome.google.com/webstore/detail/tdo/aaaabkbhklmpmlnjnbicdahijpkgnkfk).
+<!-- [Open](https://mstijak.github.io/tdo/) -->
 
 ## Install & Run
 
@@ -27,10 +23,6 @@ Also available as a [Chrome extension](https://chrome.google.com/webstore/detail
 
 If you don't use yarn yet, npm will do too.
 
-### Thanks
+## Thanks
 
-Thanks to CircleCI the app is auto deployed to GH Pages.
-
-Thanks to https://github.com/Villanuevand/deployment-circleci-gh-pages for
-providing instructions for setting up CircleCI.
-
+Thanks to [GH: mstijak/tdo](https://github.com/mstijak/tdo), this fork original author.

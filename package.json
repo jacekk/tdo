@@ -4,7 +4,6 @@
   "description": "Hackable TODO list",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0",
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
     "build": "webpack --config config/webpack.prod.js",
     "build:extension": "webpack --config config/webpack.extension.js"
