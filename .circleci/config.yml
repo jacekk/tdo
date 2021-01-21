@@ -1,0 +1,91 @@
+version: 2.1
+
+commands:
+  set_deploy_key:
+    description: Sets the SSH key for project write-access
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "6f:f9:a8:4b:8f:5b:fd:22:dd:04:b5:36:ae:78:11:e1"
+
+executors:
+  build-dir:
+    working_directory: ~/build-dir
+    docker:
+      - image: circleci/node:8
+
+jobs:
+  install:
+    executor: build-dir
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: ~/build-dir
+          paths:
+            - ./*
+  verify_build:
+    executor: build-dir
+    steps:
+      - attach_workspace:
+          at: ~/build-dir
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/build-dir
+          paths:
+            - ./*
+  deploy_ghpages:
+    executor: build-dir
+    steps:
+      - attach_workspace:
+          at: ~/build-dir
+      - set_deploy_key
+      - checkout # Required here to fix SSH deploy key
+      - run:
+          name: Copy CircleCI config into dist directory
+          command: cp -R ~/build-dir/.circleci ~/build-dir/dist/.circleci
+      - run: yarn gh-deploy
+
+workflows:
+  install_and_verify:
+    jobs:
+      - install:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - source-repo-mirror
+                - production
+      - verify_build:
+          requires:
+            - install
+  install_and_deploy:
+    jobs:
+      - install:
+          filters:
+            branches:
+              only:
+                - production
+      - verify_build:
+          requires:
+            - install
+      - hold_deploy:
+          type: approval
+          requires:
+            - verify_build
+      - deploy_ghpages:
+          requires:
+            - hold_deploy

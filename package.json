@@ -4,13 +4,14 @@
   "description": "Hackable TODO list",
   "main": "index.js",
   "scripts": {
+    "gh-deploy": "gh-pages -d dist -u \"CI-deploy <ci-deploy@jacek-k.net>\" ",
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
     "build": "webpack --config config/webpack.prod.js",
     "build:extension": "webpack --config config/webpack.extension.js"
   },
   "engines": {
-    "node": "7.x",
-    "npm": "4.x"
+    "node": "8.x",
+    "npm": "6.x"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "cx": "^17.10.6",
     "cx-react": "^17.10.0",
     "cx-redux": "^17.5.0",
+    "gh-pages": "2",
     "marked": "^0.3.6",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
