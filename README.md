@@ -20,21 +20,17 @@ Also available as a [Chrome extension](https://chrome.google.com/webstore/detail
 
 ## Install & Run
 
-Install:
-```
-yarn
-```    
-Run:
-```
-yarn start    
-```
+1. `nvm install 7`
+1. `nvm use`
+1. `yarn install` or just `yarn`
+1. `yarn start`
 
 If you don't use yarn yet, npm will do too.
 
 ### Thanks
 
 Thanks to CircleCI the app is auto deployed to GH Pages.
- 
-Thanks to https://github.com/Villanuevand/deployment-circleci-gh-pages for 
+
+Thanks to https://github.com/Villanuevand/deployment-circleci-gh-pages for
 providing instructions for setting up CircleCI.
 

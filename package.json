@@ -9,6 +9,10 @@
     "build": "webpack --config config/webpack.prod.js",
     "build:extension": "webpack --config config/webpack.extension.js"
   },
+  "engines": {
+    "node": "7.x",
+    "npm": "4.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mstijak/tdo.git"
