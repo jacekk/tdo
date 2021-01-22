@@ -12,16 +12,14 @@ A flexible TODO list with the following features:
 
 ![Screenshot](/assets/screenshot.png)
 
-<!-- [Open](https://mstijak.github.io/tdo/) -->
+[Open](https://jacekk.github.io/tdo/)
 
 ## Install & Run
 
-1. `nvm install 7`
+1. `nvm install 8`
 1. `nvm use`
 1. `yarn install` or just `yarn`
 1. `yarn start`
-
-If you don't use yarn yet, npm will do too.
 
 ## Thanks
 
